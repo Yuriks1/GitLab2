@@ -1,8 +1,8 @@
 package com.example.stringcalculator;
+
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class StringCalculatorTest {
 
@@ -12,7 +12,7 @@ class StringCalculatorTest {
     void addEmptyStringShouldReturnZero() {
 
         int result = stringCalculator.add("");
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isZero();
     }
     @Test
     void addOneNumberShouldReturnOne() {
@@ -38,5 +38,14 @@ class StringCalculatorTest {
 
         assertEquals(21, result);
 
+    }
+
+    @Test
+    void allowLinesBetweenNumbers() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        var result = stringCalculator.add("1,2,3\n4,5");
+
+        assertEquals(15, result);
     }
 }
