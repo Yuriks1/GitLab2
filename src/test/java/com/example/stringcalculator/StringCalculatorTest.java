@@ -3,6 +3,7 @@ package com.example.stringcalculator;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StringCalculatorTest {
 
@@ -57,5 +58,14 @@ class StringCalculatorTest {
         var result = stringCalculator.add("//;n1;2;3;4");
 
         assertEquals(10, result);
+    }
+
+    @Test
+    void exceptionMessageTesting() {
+
+        StringCalculator stringCalculator = new StringCalculator();
+        Exception exception =assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("-1"));
+        assertEquals("negatives not allowed\n -1", exception.getMessage());
+
     }
 }

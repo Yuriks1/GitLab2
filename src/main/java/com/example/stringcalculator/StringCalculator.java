@@ -6,6 +6,7 @@ public class StringCalculator {
 
         String delimiter = ",|\n";
         String sortedNumbers = s;
+
         if (s.startsWith("//")) {
             int delimiterLocation = s.indexOf("//") + 2;
             delimiter = s.substring(delimiterLocation, delimiterLocation + 1);
@@ -14,19 +15,26 @@ public class StringCalculator {
         return add(sortedNumbers, delimiter);
     }
 
+
     private static int add(final String s, final String delimiter) {
 
-        int sum = 0;
-        String[] sortedNumbersArray = s.split(delimiter);
-        for (String number : sortedNumbersArray) {
+            int sum = 0;
+            String message = "negatives not allowed\n";
+            String[] sortedNumbersArray = s.split(delimiter);
 
-            if (!number.trim().isEmpty()) {
-                sum += Integer.parseInt(number.trim());
-            } else {
-                sum = 0;
+            for (String number : sortedNumbersArray) {
+
+                if (!number.trim().isEmpty()) {
+
+                    if (Integer.parseInt(number.trim()) > 0) {
+                        sum += Integer.parseInt(number.trim());
+                    }
+                    else {
+                        message = message + (" " + number);
+                        throw new IllegalArgumentException(message);
+                    }
+                }
             }
-        }
-
-        return sum;
+            return sum;
     }
 }
