@@ -1,30 +1,32 @@
 package com.example.stringcalculator;
 
-import java.util.ArrayList;
-
 public class StringCalculator {
 
     public int add(String s) {
 
-        int sum = 0;
-        ArrayList<String> array = new ArrayList<String>();
-        array.add(s);
+        String delimiter = ",|\n";
+        String sortedNumbers = s;
+        if (s.startsWith("//")) {
+            int delimiterLocation = s.indexOf("//") + 2;
+            delimiter = s.substring(delimiterLocation, delimiterLocation + 1);
+            sortedNumbers = s.substring(s.indexOf("n") + 1);
+        }
+        return add(sortedNumbers, delimiter);
+    }
 
-        for (var element : array) {
-            if (element.equals("")) {
-                return 0;
-            } else if (element.contains(",")) {
-                var numbers = element.split(",");
-                if (element.contains(",") || (element.contains("\n"))) {
-                    numbers = element.split("[\\n\\,]");
-                    for (var number : numbers) {
-                        sum += Double.parseDouble(number);
-                    }
-                } else {
-                    sum += Double.parseDouble(element);
-                }
+    private static int add(final String s, final String delimiter) {
+
+        int sum = 0;
+        String[] sortedNumbersArray = s.split(delimiter);
+        for (String number : sortedNumbersArray) {
+
+            if (!number.trim().isEmpty()) {
+                sum += Integer.parseInt(number.trim());
+            } else {
+                sum = 0;
             }
         }
-        return (int) sum;
+
+        return sum;
     }
 }

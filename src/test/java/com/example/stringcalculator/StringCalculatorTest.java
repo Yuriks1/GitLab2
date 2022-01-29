@@ -48,4 +48,14 @@ class StringCalculatorTest {
 
         assertEquals(15, result);
     }
+
+    @Test
+    void addDifferentDelimiters() {
+
+        StringCalculator stringCalculator = new StringCalculator();
+
+        var result = stringCalculator.add("//;n1;2;3;4");
+
+        assertEquals(10, result);
+    }
 }
