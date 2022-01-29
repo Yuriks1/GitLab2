@@ -1,6 +1,8 @@
 package com.example.stringcalculator;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class StringCalculatorTest {
 
@@ -26,5 +28,15 @@ class StringCalculatorTest {
         int result = stringCalculator.add("1,2");
 
         assertThat(result).isEqualTo(3);
+    }
+    @Test
+    void addUnknownAmountOfNumbers() {
+
+        StringCalculator stringCalculator = new StringCalculator();
+
+        var result = stringCalculator.add("1,2,3,4,5,6");
+
+        assertEquals(21, result);
+
     }
 }

@@ -1,15 +1,27 @@
 package com.example.stringcalculator;
 
+import java.util.ArrayList;
+
 public class StringCalculator {
+    public int add(String s) {
+        int sum = 0;
+        ArrayList<String> array = new ArrayList<String>();
+        array.add(s);
 
-    public int add(String numbers) {
-
-        if (numbers.equals("")) {
-            return 0;
-        } else if (numbers.contains(",")) {
-            return Integer.parseInt(numbers.substring(0, 1)) + Integer.parseInt(numbers.substring(2, 3));
-        } else {
-            return Integer.parseInt(numbers);
+        for (var element : array) {
+            if (element.equals("")) {
+                return 0;
+            }
+            else if (element.contains(",")) {
+                var numbers = element.split(",");
+                for (var number : numbers) {
+                    sum += Double.parseDouble(number);
+                }
+            }
+            else {
+                sum += Double.parseDouble(element);
+            }
         }
+        return (int) sum;
     }
 }
