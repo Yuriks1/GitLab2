@@ -9,8 +9,7 @@ class EmployeeManagerTest {
 
     EmployeeRepository employeeRepository = new EmployeeRepositoryStub(List.of(
 
-            new Employee("1", 10000),
-            new Employee("2", 20000)));
+            new Employee("1", 10000)));
 
     BankService bankService = mock(BankService.class);
     EmployeeManager employeeManager = new EmployeeManager(employeeRepository, bankService);
@@ -33,7 +32,7 @@ class EmployeeManagerTest {
 
         BankService bankService = mock(BankService.class);
 
-        Employee employee1 = new Employee(anyString(), 30000);
+        Employee employee1 = new Employee(anyString(), 20000);
 
         assertThat(employee1.isPaid());
 
