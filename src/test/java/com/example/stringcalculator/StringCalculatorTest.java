@@ -42,7 +42,7 @@ class StringCalculatorTest {
     }
 
     @Test
-    void allowLinesBetweenNumbers() {
+    void addTestToAllowLinesBetweenNumbers() {
         StringCalculator stringCalculator = new StringCalculator();
 
         var result = stringCalculator.add("1,2,3\n4,5");
@@ -51,7 +51,7 @@ class StringCalculatorTest {
     }
 
     @Test
-    void addDifferentDelimiters() {
+    void addTestForDifferentDelimiters() {
 
         StringCalculator stringCalculator = new StringCalculator();
 
@@ -61,11 +61,21 @@ class StringCalculatorTest {
     }
 
     @Test
-    void exceptionMessageTesting() {
+    void addTestToShowExceptionMessage() {
 
         StringCalculator stringCalculator = new StringCalculator();
         Exception exception =assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("-1"));
         assertEquals("negatives not allowed\n -1", exception.getMessage());
 
+    }
+
+    @Test
+    void addTestToIgnoreNumbersOverThousand() {
+
+        StringCalculator stringCalculator = new StringCalculator();
+
+        var result = stringCalculator.add("2,1001");
+
+        assertEquals( 2,result);
     }
 }

@@ -18,23 +18,24 @@ public class StringCalculator {
 
     private static int add(final String s, final String delimiter) {
 
-            int sum = 0;
-            String message = "negatives not allowed\n";
-            String[] sortedNumbersArray = s.split(delimiter);
+        int sum = 0;
+        String message = "negatives not allowed\n";
+        String[] sortedNumbersArray = s.split(delimiter);
 
-            for (String number : sortedNumbersArray) {
+        for (String number : sortedNumbersArray) {
 
-                if (!number.trim().isEmpty()) {
+            if (!number.trim().isEmpty()) {
 
-                    if (Integer.parseInt(number.trim()) > 0) {
+                if (Integer.parseInt(number.trim()) > 0) {
+                    if (Integer.parseInt(number.trim()) <1000){
                         sum += Integer.parseInt(number.trim());
-                    }
-                    else {
-                        message = message + (" " + number);
-                        throw new IllegalArgumentException(message);
-                    }
+                    }}
+                else {
+                    message = message + (" " + number);
+                    throw new IllegalArgumentException(message);
                 }
             }
-            return sum;
+        }
+        return sum;
     }
 }
