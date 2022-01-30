@@ -20,7 +20,6 @@ class StringCalculatorTest {
     void addOneNumberShouldReturnOne() {
 
         int result = stringCalculator.add("1");
-
         assertThat(result).isEqualTo(1);
     }
 
@@ -28,44 +27,34 @@ class StringCalculatorTest {
     void addTwoNumbersShouldReturnThree() {
 
         int result = stringCalculator.add("1,2");
-
         assertThat(result).isEqualTo(3);
     }
 
     @Test
     void addUnknownAmountOfNumbers() {
 
-        StringCalculator stringCalculator = new StringCalculator();
-
         var result = stringCalculator.add("1,2,3,4,5,6");
-
         assertEquals(21, result);
 
     }
 
     @Test
     void addTestToAllowLinesBetweenNumbers() {
-        StringCalculator stringCalculator = new StringCalculator();
 
         var result = stringCalculator.add("1,2,3\n4,5");
-
         assertEquals(15, result);
     }
 
     @Test
     void addTestForDifferentDelimiters() {
 
-        StringCalculator stringCalculator = new StringCalculator();
-
         var result = stringCalculator.add("//;n1;2;3;4");
-
         assertEquals(10, result);
     }
 
     @Test
     void addTestToShowExceptionMessage() {
 
-        StringCalculator stringCalculator = new StringCalculator();
         Exception exception = assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("-1"));
         assertEquals("negatives not allowed\n -1", exception.getMessage());
 
@@ -74,7 +63,6 @@ class StringCalculatorTest {
     @Test
     void addTestToIgnoreNumbersOverThousand() {
 
-        StringCalculator stringCalculator = new StringCalculator();
         var result = stringCalculator.add("2,1001");
         assertEquals(2, result);
     }
@@ -82,7 +70,6 @@ class StringCalculatorTest {
     @Test
     void addTestToShowDelimiterCanBeOfAnyLength() {
 
-        StringCalculator stringCalculator = new StringCalculator();
         var result = stringCalculator.add("//[***]\n1***2***3");
         assertEquals(6, result);
     }
@@ -90,8 +77,13 @@ class StringCalculatorTest {
     @Test
     void allowForMultipleDelimiters() {
 
-        StringCalculator stringCalculator = new StringCalculator();
         var result = stringCalculator.add("//[*][%]\n1*2%3%4%%5");
         assertEquals(15, result);
+    }
+    @Test
+    void allowForMultipleDelimitersOfAnyLength() {
+
+        var result = stringCalculator.add("//[***][%%%]\n1***2%%%5");
+        assertEquals( 8,result);
     }
 }
