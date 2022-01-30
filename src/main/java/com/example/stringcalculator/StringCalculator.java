@@ -8,9 +8,16 @@ public class StringCalculator {
         String sortedNumbers = s;
 
         if (s.startsWith("//")) {
-            int delimiterLocation = s.indexOf("//") + 2;
-            delimiter = s.substring(delimiterLocation, delimiterLocation + 1);
-            sortedNumbers = s.substring(s.indexOf("n") + 1);
+            if (s.contains("[")) {
+                delimiter = s.substring(s.indexOf("[") + 1, s.indexOf("]"));
+                sortedNumbers = s.substring(s.indexOf("]") + 2);
+                sortedNumbers = sortedNumbers.replace(delimiter, ",");
+                delimiter = ",";
+            } else {
+                int delimiterPosition = s.indexOf("//") + 2;
+                delimiter = s.substring(delimiterPosition, delimiterPosition + 1);
+                sortedNumbers = s.substring(s.indexOf("n") + 1);
+            }
         }
         return add(sortedNumbers, delimiter);
     }

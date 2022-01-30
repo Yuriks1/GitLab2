@@ -73,9 +73,15 @@ class StringCalculatorTest {
     void addTestToIgnoreNumbersOverThousand() {
 
         StringCalculator stringCalculator = new StringCalculator();
-
         var result = stringCalculator.add("2,1001");
-
         assertEquals( 2,result);
+    }
+
+    @Test
+    void addTestToShowDelimiterCanBeOfAnyLength() {
+
+        StringCalculator stringCalculator = new StringCalculator();
+        var result = stringCalculator.add("//[***]\n1***2***3");
+        assertEquals( 6,result);
     }
 }
