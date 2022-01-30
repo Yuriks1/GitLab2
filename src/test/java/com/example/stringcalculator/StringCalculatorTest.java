@@ -15,6 +15,7 @@ class StringCalculatorTest {
         int result = stringCalculator.add("");
         assertThat(result).isZero();
     }
+
     @Test
     void addOneNumberShouldReturnOne() {
 
@@ -30,6 +31,7 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(3);
     }
+
     @Test
     void addUnknownAmountOfNumbers() {
 
@@ -64,7 +66,7 @@ class StringCalculatorTest {
     void addTestToShowExceptionMessage() {
 
         StringCalculator stringCalculator = new StringCalculator();
-        Exception exception =assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("-1"));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("-1"));
         assertEquals("negatives not allowed\n -1", exception.getMessage());
 
     }
@@ -74,7 +76,7 @@ class StringCalculatorTest {
 
         StringCalculator stringCalculator = new StringCalculator();
         var result = stringCalculator.add("2,1001");
-        assertEquals( 2,result);
+        assertEquals(2, result);
     }
 
     @Test
@@ -82,6 +84,14 @@ class StringCalculatorTest {
 
         StringCalculator stringCalculator = new StringCalculator();
         var result = stringCalculator.add("//[***]\n1***2***3");
-        assertEquals( 6,result);
+        assertEquals(6, result);
+    }
+
+    @Test
+    void allowForMultipleDelimiters() {
+
+        StringCalculator stringCalculator = new StringCalculator();
+        var result = stringCalculator.add("//[*][%]\n1*2%3%4%%5");
+        assertEquals(15, result);
     }
 }
