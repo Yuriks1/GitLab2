@@ -1,7 +1,6 @@
 package com.example;
 
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class EmployeeTest {
@@ -9,15 +8,15 @@ class EmployeeTest {
     Employee employee = new Employee("1", 10000);
 
     @Test
-    void testThatIdShouldReturnTwo() {
+    void testToStringMethod() {
 
-        employee.setId("2");
-        var result = employee.getId();
-        assertThat(result).isEqualTo("2");
+        var result = employee.toString();
+        assertThat(result).isEqualTo("Employee [id=1, salary=10000.0]");
     }
 
     @Test
     void testThatEmployeeReturnCorrectName(){
+
         employee.setId("Martin");
         var result = employee.getId();
         assertThat(result).isEqualTo("Martin");
@@ -32,12 +31,7 @@ class EmployeeTest {
         assertThat(result).isEqualTo(20000.0);
     }
 
-    @Test
-    void testToStringMethod() {
 
-        var result = employee.toString();
-        assertThat(result).isEqualTo("Employee [id=1, salary=10000.0]");
-    }
 
     @Test
     void testToGetSalaryForEmployee() {
