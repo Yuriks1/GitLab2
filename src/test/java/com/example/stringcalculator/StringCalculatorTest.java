@@ -9,6 +9,7 @@ class StringCalculatorTest {
 
     StringCalculator stringCalculator = new StringCalculator();
 
+
     @Test
     void addEmptyStringShouldReturnZero() {
 

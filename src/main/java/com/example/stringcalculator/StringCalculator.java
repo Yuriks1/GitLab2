@@ -16,6 +16,7 @@ public class StringCalculator {
 
                     s=s.substring(s.indexOf("\n")+1);
                     delimiter=",";
+
                 } else {
                     int delimiterPosition = s.indexOf("//") + 2;
                     delimiter = s.substring(delimiterPosition, delimiterPosition + 1);
@@ -23,7 +24,7 @@ public class StringCalculator {
                 }
             }
             return add(s, delimiter);
-        }
+    }
 
 
     private static int add(final String s, final String delimiter) {
@@ -39,7 +40,8 @@ public class StringCalculator {
                 if (Integer.parseInt(number.trim()) > 0) {
                     if (Integer.parseInt(number.trim()) <1000){
                         sum += Integer.parseInt(number.trim());
-                    }}
+                    }
+                }
                 else {
                     message = message + (" " + number);
                     throw new IllegalArgumentException(message);
